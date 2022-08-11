@@ -28,7 +28,7 @@ pipeline {
       stage('Checkout') {
         steps {
         // Get Github repo
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:'https://github.com/elvisperaltad/docker-devop.git']]])        }
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url:'https://github.com/elvisperaltad/devops-repo.git']]])        }
       }
       stage('Install dependencies') {
         steps {
