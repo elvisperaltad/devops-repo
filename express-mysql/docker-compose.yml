@@ -12,7 +12,7 @@ services:
     depends_on:
       - mysql_db
     networks:
-      - docker_pirate_net
+      - docker_devep_net
     restart: on-failure
     deploy:
       resources:
@@ -21,7 +21,6 @@ services:
   mysql_db:
     container_name: my_mysql_db
     image: mysql:latest
-    # Important command to allow legacy authentications for old versions
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
@@ -33,20 +32,20 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - docker_pirate_mysql_db_volume:/var/lib/mysql
+      - docker_devops_mysql_db_volume:/var/lib/mysql
       - ./db:/docker-entrypoint-initdb.d
     networks:
-      - docker_pirate_net
+      - docker_devep_net
     deploy:
       resources:
         limits:
           memory: 1G
 
 volumes:
-  docker_pirate_mysql_db_volume:
-    name: "docker_pirate_mysql_db_volume"
+  docker_devops_mysql_db_volume:
+    name: "docker_devep_mysql_db_volume"
 
 networks:
-  docker_pirate_net:
+  docker_devep_net:
     driver: bridge
-    name: docker_pirate_net
+    name: docker_devep_net
